@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- React для анимаций и слайдера -->
+  <!-- React для анимаций -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -68,6 +68,13 @@
       font-size: clamp(20px, 3vw, 36px);
       transform: translate(0, 0);
       letter-spacing: 1px;
+      position: fixed;
+    }
+
+    #logo.adaptive-position {
+      top: 20px !important;
+      left: 20px !important;
+      font-size: 28px !important;
     }
 
     /* === Основной контейнер === */
@@ -95,6 +102,13 @@
       border: 1px solid rgba(255,255,255,0.4);
     }
 
+    #content-container.adaptive-layout {
+      top: 50% !important;
+      flex-direction: column;
+      gap: 25px;
+      padding: 30px;
+    }
+
     /* === Изображение === */
     #about-image-container {
       flex: 1 1 300px;
@@ -106,8 +120,10 @@
       transition: transform 0.3s ease;
     }
 
-    #about-image-container:hover {
-      transform: translateY(-5px);
+    #about-image-container.adaptive-image {
+      max-width: 100% !important;
+      height: 300px;
+      order: 1;
     }
 
     #about-image {
@@ -116,6 +132,10 @@
       object-fit: cover;
       display: block;
       min-height: 250px;
+    }
+
+    #about-image-container:hover {
+      transform: translateY(-5px);
     }
 
     /* === Текст === */
@@ -131,6 +151,13 @@
       text-align: left;
     }
     
+    #about-text.adaptive-text {
+      order: 2;
+      text-align: center;
+      padding: 0;
+      font-size: 1.1rem;
+    }
+
     #about-text strong {
       font-weight: 700;
       color: var(--primary-color);
@@ -173,6 +200,12 @@
       width: 100%;
       flex-wrap: wrap;
       align-items: flex-start;
+    }
+
+    .square-buttons.adaptive-buttons {
+      order: 3;
+      margin-top: 20px;
+      gap: 15px;
     }
 
     .square-btn {
@@ -342,6 +375,58 @@
       font-size: 0.9rem;
     }
 
+    /* === Переключатель языка === */
+    .language-switcher {
+      position: fixed;
+      top: 3vh;
+      right: 3vw;
+      z-index: 2000;
+      display: flex;
+      gap: 8px;
+      background: rgba(255,255,255,0.6);
+      padding: 8px;
+      border-radius: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .language-switcher.adaptive-switcher {
+      top: 20px;
+      right: 20px;
+    }
+
+    .language-btn {
+      background: none;
+      border: none;
+      padding: 6px 15px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(14px, 1.5vw, 16px);
+      font-weight: 700;
+      color: var(--primary-color);
+      transition: var(--transition);
+    }
+
+    .language-btn.active {
+      color: white;
+      background: var(--primary-color);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .language-btn:hover:not(.active) {
+      background: var(--hover-color);
+      color: white;
+    }
+
+    /* === Адаптивные классы === */
+    @media (max-width: 1100px) {
+      .adaptive-on-desktop {
+        /* Принудительно применяем адаптивный режим на планшетах */
+      }
+    }
+
     /* === Мобильная версия === */
     @media (max-width: 768px) {
       #logo {
@@ -403,6 +488,12 @@
           display: none;
       }
 
+      .language-switcher {
+        top: 15px;
+        right: 15px;
+        padding: 5px 10px;
+      }
+
       .slider-container {
         width: 95%;
         height: 70vh;
@@ -416,6 +507,25 @@
 
       .slider-nav {
         padding: 0 10px;
+      }
+    }
+
+    /* === Очень маленькие экраны === */
+    @media (max-width: 480px) {
+      #logo.active-state {
+        top: 10px;
+        left: 10px;
+        font-size: 20px;
+      }
+      
+      #content-container {
+        padding: 15px;
+        width: 95%;
+      }
+      
+      .square-btn {
+        width: 55px;
+        height: 55px;
       }
     }
 
@@ -519,6 +629,149 @@
         labelKey: 'btnBooking'
       }
     ];
+
+    // === Функции адаптивности ===
+    const AdaptiveLayout = {
+      // Проверяем расстояние между логотипом и основным блоком
+      checkLogoDistance() {
+        const logo = document.getElementById('logo');
+        const content = document.getElementById('content-container');
+        
+        if (!logo || !content) return;
+        
+        const logoRect = logo.getBoundingClientRect();
+        const contentRect = content.getBoundingClientRect();
+        
+        // Проверяем расстояние по вертикали
+        const verticalDistance = contentRect.top - logoRect.bottom;
+        
+        // Если расстояние меньше 20px, применяем адаптивный класс
+        if (verticalDistance < 20 && logoRect.bottom > 0) {
+          logo.classList.add('adaptive-position');
+        } else {
+          logo.classList.remove('adaptive-position');
+        }
+      },
+      
+      // Проверяем, достаточно ли места для горизонтального расположения
+      checkHorizontalLayout() {
+        const container = document.getElementById('content-container');
+        const image = document.getElementById('about-image-container');
+        const text = document.getElementById('about-text');
+        const buttons = document.querySelector('.square-buttons');
+        const windowWidth = window.innerWidth;
+        
+        if (!container || !image || !text || !buttons) return;
+        
+        // Если ширина окна меньше 900px или контейнер слишком узкий
+        if (windowWidth < 900) {
+          container.classList.add('adaptive-layout');
+          image.classList.add('adaptive-image');
+          text.classList.add('adaptive-text');
+          buttons.classList.add('adaptive-buttons');
+        } else {
+          // Проверяем, помещаются ли элементы горизонтально
+          const containerRect = container.getBoundingClientRect();
+          const imageWidth = image.offsetWidth;
+          const textWidth = text.offsetWidth;
+          const gap = 30; // gap между элементами
+          
+          const neededWidth = imageWidth + textWidth + gap;
+          
+          if (neededWidth > containerRect.width * 0.95) {
+            container.classList.add('adaptive-layout');
+            image.classList.add('adaptive-image');
+            text.classList.add('adaptive-text');
+            buttons.classList.add('adaptive-buttons');
+          } else {
+            container.classList.remove('adaptive-layout');
+            image.classList.remove('adaptive-image');
+            text.classList.remove('adaptive-text');
+            buttons.classList.remove('adaptive-buttons');
+          }
+        }
+      },
+      
+      // Проверяем высоту изображения относительно текста
+      checkImageTextRatio() {
+        const image = document.getElementById('about-image-container');
+        const text = document.getElementById('about-text');
+        
+        if (!image || !text) return;
+        
+        const imageHeight = image.offsetHeight;
+        const textHeight = text.offsetHeight;
+        
+        // Если текст в 2 раза выше изображения, меняем порядок
+        if (textHeight > imageHeight * 2 && window.innerWidth > 768) {
+          image.style.order = '1';
+          text.style.order = '2';
+        } else {
+          image.style.order = '';
+          text.style.order = '';
+        }
+      },
+      
+      // Проверяем размеры кнопок
+      checkButtonSizes() {
+        const buttons = document.querySelectorAll('.square-btn');
+        const container = document.getElementById('content-container');
+        
+        if (!buttons.length || !container) return;
+        
+        const containerWidth = container.offsetWidth;
+        const buttonWidth = 70; // базовая ширина кнопки
+        const gap = 20;
+        const totalButtonsWidth = (buttonWidth + gap) * buttons.length - gap;
+        
+        // Если кнопки не помещаются в одну строку
+        if (totalButtonsWidth > containerWidth * 0.8) {
+          buttons.forEach(btn => {
+            btn.style.width = '60px';
+            btn.style.height = '60px';
+            btn.style.fontSize = '18px';
+          });
+        } else {
+          buttons.forEach(btn => {
+            btn.style.width = '';
+            btn.style.height = '';
+            btn.style.fontSize = '';
+          });
+        }
+      },
+      
+      // Проверяем язык переключателя
+      checkLanguageSwitcher() {
+        const switcher = document.querySelector('.language-switcher');
+        const logo = document.getElementById('logo');
+        
+        if (!switcher || !logo) return;
+        
+        const switcherRect = switcher.getBoundingClientRect();
+        const logoRect = logo.getBoundingClientRect();
+        
+        // Проверяем пересечение
+        if (
+          switcherRect.left < logoRect.right &&
+          switcherRect.right > logoRect.left &&
+          switcherRect.top < logoRect.bottom &&
+          switcherRect.bottom > logoRect.top
+        ) {
+          switcher.classList.add('adaptive-switcher');
+        } else {
+          switcher.classList.remove('adaptive-switcher');
+        }
+      },
+      
+      // Запускаем все проверки
+      runAllChecks() {
+        this.checkLogoDistance();
+        this.checkHorizontalLayout();
+        this.checkImageTextRatio();
+        this.checkButtonSizes();
+        this.checkLanguageSwitcher();
+      }
+    };
 
     // === React компонент слайдера ===
     function GallerySlider({ isOpen, onClose, language }) {
@@ -655,6 +908,36 @@
       const [language, setLanguage] = React.useState(null);
       const [showSlider, setShowSlider] = React.useState(false);
 
+      // Запускаем адаптивные проверки при загрузке и изменении размера
+      React.useEffect(() => {
+        // Функция для запуска проверок с debounce
+        const runChecks = () => {
+          if (language) {
+            AdaptiveLayout.runAllChecks();
+          }
+        };
+        
+        // Запускаем сразу
+        runChecks();
+        
+        // Добавляем обработчик изменения размера окна
+        const handleResize = () => {
+          runChecks();
+        };
+        
+        window.addEventListener('resize', handleResize);
+        
+        // Запускаем проверки каждые 500мс на первые 5 секунд после загрузки
+        // Это нужно для полной загрузки всех элементов
+        const initialChecks = setInterval(runChecks, 500);
+        setTimeout(() => clearInterval(initialChecks), 5000);
+        
+        return () => {
+          window.removeEventListener('resize', handleResize);
+          clearInterval(initialChecks);
+        };
+      }, [language]);
+
       // Функция запуска анимации при выборе языка
       const startAnimation = (lang) => {
         setLanguage(lang);
@@ -668,6 +951,10 @@
         // Показ контента с задержкой
         setTimeout(() => {
           contentContainer.style.opacity = '1';
+          // Запускаем адаптивные проверки после показа контента
+          setTimeout(() => {
+            AdaptiveLayout.runAllChecks();
+          }, 300);
         }, 800);
       };
 
