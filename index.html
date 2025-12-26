@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IrVita Grooming Salon</title>
-<<<<<<< HEAD
   
   <!-- Минимальные зависимости -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -13,16 +12,9 @@
   <!-- React для анимаций и слайдера -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-=======
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-FVbcU9Kp4xly4fdK3T3L5m2cyGPFlmkDbDw1H+9PZLkCdL0C9P3zWFMJsMzZHD71z+YzN16wZsTxQQN6y3rXQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   
   <style>
-<<<<<<< HEAD
     /* === CSS Variables === */
     :root {
       --primary-color: #0081A7;
@@ -32,14 +24,6 @@
       --hover-color: #00A8E8;
       --shadow: 0 10px 30px rgba(0,0,0,0.15);
       --transition: all 0.3s ease;
-=======
-    :root {
-      --primary-color: #0081A7; /* Глубокий бирюзово-синий */
-      --secondary-color: #FFC06E; /* Мягкий персиково-золотой акцент */
-      --text-color: #1F2937;
-      --light-bg: rgba(255,255,255,0.7);
-      --hover-color: #00A8E8;
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
     }
 
     * {
@@ -79,19 +63,11 @@
     }
     
     #logo.active-state {
-<<<<<<< HEAD
       top: 30px;
       left: 30px;
       font-size: clamp(20px, 3vw, 36px);
       transform: translate(0, 0);
       letter-spacing: 1px;
-=======
-        top: 30px;
-        left: 30px;
-        font-size: clamp(20px, 3vw, 36px);
-        transform: translate(0, 0);
-        letter-spacing: 1px;
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
     }
 
     /* === Основной контейнер === */
@@ -111,16 +87,10 @@
       z-index: 500;
       padding: 40px;
       
-<<<<<<< HEAD
       /* Glassmorphism эффект */
       background: var(--light-bg);
       border-radius: 20px;
       box-shadow: var(--shadow);
-=======
-      background: var(--light-bg);
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
       backdrop-filter: blur(20px);
       border: 1px solid rgba(255,255,255,0.4);
     }
@@ -133,14 +103,11 @@
       overflow: hidden;
       border-radius: 16px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-<<<<<<< HEAD
       transition: transform 0.3s ease;
     }
 
     #about-image-container:hover {
       transform: translateY(-5px);
-=======
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
     }
 
     #about-image {
@@ -165,7 +132,6 @@
     }
     
     #about-text strong {
-<<<<<<< HEAD
       font-weight: 700;
       color: var(--primary-color);
     }
@@ -199,79 +165,6 @@
     }
 
     /* === Квадратные кнопки (как в оригинале) === */
-=======
-        font-weight: 700;
-        color: var(--primary-color);
-    }
-    
-    #about-text p {
-        margin-bottom: 15px;
-    }
-    
-    #about-text ul {
-        list-style: none;
-        padding-left: 0;
-        margin-top: 20px;
-    }
-    
-    #about-text li {
-        margin-bottom: 8px;
-        position: relative;
-        padding-left: 25px;
-        font-size: 0.95em;
-    }
-    
-    #about-text li::before {
-        content: "\f00c";
-        font-family: 'Font Awesome 6 Free';
-        font-weight: 900;
-        position: absolute;
-        left: 0;
-        color: var(--secondary-color);
-        font-size: 1em;
-        line-height: 1.6;
-    }
-
-    .language-switcher {
-      position: fixed;
-      top: 3vh;
-      right: 3vw;
-      z-index: 2000;
-      display: flex;
-      gap: 8px;
-      background: rgba(255,255,255,0.6);
-      padding: 8px;
-      border-radius: 40px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.3);
-    }
-
-    .language-btn {
-      background: none;
-      border: none;
-      padding: 6px 15px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(14px, 1.5vw, 16px);
-      font-weight: 700;
-      color: var(--primary-color);
-      transition: all 0.3s ease;
-    }
-
-    .language-btn.active {
-      color: white;
-      background: var(--primary-color);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .language-btn:hover:not(.active) {
-        background: var(--hover-color);
-        color: white;
-    }
-
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
     .square-buttons {
       display: flex;
       justify-content: center;
@@ -282,23 +175,18 @@
       align-items: flex-start;
     }
 
-    /* Адаптированный стиль для кнопок, чтобы они работали с изображениями */
     .square-btn {
       width: 70px;
       height: 70px;
       border-radius: 18px;
       background: var(--light-bg);
-<<<<<<< HEAD
       color: var(--primary-color);
-=======
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
       border: 2px solid var(--primary-color);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-<<<<<<< HEAD
       transition: var(--transition);
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       font-size: 22px;
@@ -313,47 +201,17 @@
       text-transform: uppercase;
       margin-top: 5px;
       color: var(--text-color);
-=======
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      position: relative;
-      overflow: hidden;
-      padding: 5px; /* Уменьшаем паддинг для изображений */
-    }
-    
-    .square-btn img {
-        width: 32px; /* Размер изображения, чтобы оно хорошо вписывалось */
-        height: 32px;
-        object-fit: contain;
-    }
-    
-    .square-btn i {
-        font-size: 22px; /* На случай, если иконка все же используется */
-        color: var(--primary-color);
-    }
-
-    .square-btn span {
-        font-size: 10px;
-        font-weight: 700;
-        text-transform: uppercase;
-        margin-top: 5px;
-        color: var(--text-color);
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
     }
 
     .square-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       background: var(--primary-color);
-<<<<<<< HEAD
       color: white;
-=======
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
       border-color: var(--primary-color);
     }
     
     .square-btn:hover span {
-<<<<<<< HEAD
       color: white;
     }
 
@@ -373,14 +231,6 @@
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s ease, visibility 0.3s ease;
-=======
-        color: white;
-    }
-    
-    /* Добавляем эффект ховера для иконок/изображений */
-    .square-btn:hover i, .square-btn:hover img {
-        filter: brightness(0) invert(1); /* Делает изображение белым */
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
     }
 
     .slider-overlay.active {
@@ -533,13 +383,10 @@
           text-align: left;
       }
       
-<<<<<<< HEAD
       #about-text li {
           font-size: 1em;
       }
 
-=======
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
       .square-buttons {
         gap: 10px;
         margin-top: 20px;
@@ -548,16 +395,12 @@
       .square-btn {
         width: 60px;
         height: 60px;
-<<<<<<< HEAD
         font-size: 20px;
-=======
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
         border-radius: 12px;
       }
       
       .square-btn span {
           display: none;
-<<<<<<< HEAD
       }
 
       .slider-container {
@@ -598,9 +441,6 @@
 
     .slide-out {
       animation: slideOut 0.5s ease forwards;
-=======
-      }
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
     }
   </style>
 </head>
@@ -612,10 +452,6 @@
     // === Данные для переводов ===
     const translations = {
       ru: {
-<<<<<<< HEAD
-=======
-        title: "IrVita grooming",
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
         description: `IrVita — это премиальный салон груминга, где мы сочетаем <strong>профессиональный уход</strong> с искренней любовью к животным. Наши сертифицированные мастера создают не просто стильную стрижку, а настоящий wellness-опыт для вашего питомца.
 
         <ul>
@@ -631,10 +467,6 @@
         btnBooking: "Запись"
       },
       lv: {
-<<<<<<< HEAD
-=======
-        title: "IrVita grooming",
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
         description: `IrVita ir premiumā grozinga salons, kur mēs apvienojam <strong>profesionālu aprūpi</strong> ar patiesu mīlestību pret dzīvniekiem. Mūsu sertificētie meistari rada ne tikai stilu, bet pilnvērtīgu wellness pieredzi jūsu mājdzīvniekam.
 
         <ul>
@@ -651,7 +483,6 @@
       }
     };
 
-<<<<<<< HEAD
     // === Оригинальные ссылки на фото ===
     const galleryPhotos = [
       { id: 1, src: 'foto/jorki/jork1.png' },
@@ -672,43 +503,23 @@
       {
         id: 1,
         icon: 'fab fa-instagram',
-=======
-    // --- КОНФИГУРАЦИЯ КНОПОК ВОЗВРАЩЕНА К ОРИГИНАЛЬНОЙ ЛОГИКЕ ---
-    const buttonConfig = [
-      {
-        id: 1,
-        icon: 'fab fa-instagram', 
-        imagePath: 'foto/insta.png', // ИСПОЛЬЗУЕТ ВАШ ПУТЬ
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
         link: 'https://www.instagram.com/pet_beauty_groom?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
         labelKey: 'btnInstagram'
       },
       {
         id: 2,
-<<<<<<< HEAD
         icon: 'fas fa-camera-retro',
         labelKey: 'btnGallery',
         type: 'gallery'
-=======
-        icon: "fas fa-camera-retro",
-        imagePath: 'foto/galer.png', // ИСПОЛЬЗУЕТ ВАШ ПУТЬ
-        link: 'photo.html',
-        labelKey: 'btnGallery'
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
       },
       {
         id: 3,
         icon: 'fas fa-calendar-alt',
-<<<<<<< HEAD
-=======
-        imagePath: 'foto/zapis.png', // ИСПОЛЬЗУЕТ ВАШ ПУТЬ
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
         link: 'https://apnt.app/pet_beauty_groom',
         labelKey: 'btnBooking'
       }
     ];
 
-<<<<<<< HEAD
     // === React компонент слайдера ===
     function GallerySlider({ isOpen, onClose, language }) {
       const [currentSlide, setCurrentSlide] = React.useState(0);
@@ -729,16 +540,11 @@
             onClose();
           }
         };
-=======
-    function App() {
-      const [language, setLanguage] = React.useState(null);
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
 
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
       }, [isOpen, currentSlide, onClose]);
 
-<<<<<<< HEAD
       // Функция перехода к конкретному слайду
       const goToSlide = (index) => {
         // Определяем направление анимации
@@ -746,22 +552,6 @@
           setSlideDirection('slide-in');
         } else {
           setSlideDirection('slide-out');
-=======
-        const logo = document.getElementById('logo');
-        const contentContainer = document.getElementById('content-container');
-        
-        logo.classList.add('active-state');
-
-        setTimeout(() => {
-          contentContainer.style.opacity = '1';
-        }, 800);
-      };
-
-      // Обработчик клика по кнопке
-      const handleButtonClick = (link) => {
-        if (link) {
-          window.open(link, '_blank');
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
         }
         
         // Корректируем индекс для зацикливания
@@ -776,9 +566,6 @@
           setSlideDirection('');
         }, 500);
       };
-      
-      const descriptionHTML = language ? { __html: translations[language].description } : { __html: '' };
-
 
       // Обработчики свайпа для мобильных
       const handleTouchStart = (e) => {
@@ -818,7 +605,6 @@
             <button className="slider-close" onClick={onClose} aria-label="Close">
               <i className="fas fa-times"></i>
             </button>
-<<<<<<< HEAD
             
             <div className="slider-wrapper"
                  onTouchStart={handleTouchStart}
@@ -844,40 +630,6 @@
                   aria-label="Previous photo"
                 >
                   <i className="fas fa-chevron-left"></i>
-=======
-            <button 
-              className={`language-btn ${language === 'lv' ? 'active' : ''}`}
-              onClick={() => startAnimation('lv')}
-            >
-              LV
-            </button>
-          </div>
-
-          <div id="content-container">
-            <div id="about-image-container">
-              <img 
-                id="about-image" 
-                src="foto/lover.png" 
-                alt="Pet grooming"
-              />
-            </div>
-            <div id="about-text" dangerouslySetInnerHTML={descriptionHTML}></div>
-            
-            <div className="square-buttons">
-              {language && buttonConfig.map(button => (
-                <button 
-                  key={button.id}
-                  className="square-btn"
-                  onClick={() => handleButtonClick(button.link)}
-                  title={translations[language][button.labelKey]}
-                >
-                  {/* ВОЗВРАЩЕНИЕ ЛОГИКИ ОТОБРАЖЕНИЯ ИЗОБРАЖЕНИЯ ИЛИ ИКОНКИ */}
-                  {button.imagePath
-                    ? <img src={button.imagePath} alt={translations[language][button.labelKey]} />
-                    : <i className={button.icon}></i>
-                  }
-                  <span>{translations[language][button.labelKey]}</span>
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
                 </button>
                 
                 <button 
@@ -898,7 +650,6 @@
       );
     }
 
-<<<<<<< HEAD
     // === Основной React компонент ===
     function App() {
       const [language, setLanguage] = React.useState(null);
@@ -1045,8 +796,6 @@
     }
 
     // === Рендеринг React приложения ===
-=======
->>>>>>> 742767a3b7d866b833e85596573ac35ec07ae08c
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<App />);
   </script>
