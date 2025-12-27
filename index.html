@@ -30,6 +30,12 @@
       --safe-right: env(safe-area-inset-right, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
       --safe-left: env(safe-area-inset-left, 0px);
+      
+      /* Button colors */
+      --btn-icon-bg: rgba(255, 255, 255, 0.9);
+      --btn-text-bg: rgba(0, 129, 167, 0.1);
+      --btn-hover-icon-bg: #0081A7;
+      --btn-hover-text-bg: rgba(0, 129, 167, 0.2);
     }
 
     * {
@@ -91,7 +97,7 @@
       width: 90%;
       max-width: 1100px;
       display: flex;
-      align-items: flex-start; /* Меняем на flex-start чтобы изображение не растягивалось */
+      align-items: flex-start;
       flex-wrap: wrap;
       gap: 30px;
       opacity: 0;
@@ -107,7 +113,7 @@
       border: 1px solid rgba(255,255,255,0.4);
     }
 
-    /* === Изображение - ИЗМЕНЕНО === */
+    /* === Изображение === */
     #about-image-container {
       flex: 1 1 300px;
       max-width: 450px;
@@ -120,19 +126,18 @@
       align-items: center;
       justify-content: center;
       min-height: 250px;
-      background: #f8fafc; /* Фон на случай, если изображение не загрузится */
+      background: #f8fafc;
     }
 
     #about-image {
       width: 100%;
-      height: auto; /* Автоматическая высота */
-      max-height: 500px; /* Максимальная высота */
-      object-fit: contain; /* Вписываем полностью */
+      height: auto;
+      max-height: 500px;
+      object-fit: contain;
       display: block;
       border-radius: 12px;
     }
 
-    /* При наведении - легкий зум */
     #about-image-container:hover {
       transform: translateY(-5px);
     }
@@ -188,8 +193,8 @@
       line-height: 1.6;
     }
 
-    /* === Квадратные кнопки (как в оригинале) === */
-    .square-buttons {
+    /* === ПРЯМОУГОЛЬНЫЕ КНОПКИ - ПЕРЕДЕЛАНЫ === */
+    .rectangle-buttons {
       display: flex;
       justify-content: center;
       gap: 20px;
@@ -200,44 +205,63 @@
       padding-bottom: 10px;
     }
 
-    .square-btn {
-      width: 70px;
+    .rectangle-btn {
+      display: flex;
+      width: 200px;
       height: 70px;
       border-radius: 18px;
-      background: var(--light-bg);
-      color: var(--primary-color);
-      border: 2px solid var(--primary-color);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       cursor: pointer;
       transition: var(--transition);
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      font-size: 22px;
-      position: relative;
+      border: 2px solid var(--primary-color);
       overflow: hidden;
       text-decoration: none;
     }
-    
-    .square-btn span {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-top: 5px;
-      color: var(--text-color);
+
+    .btn-icon {
+      width: 70px;
+      height: 100%;
+      background: var(--btn-icon-bg);
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: var(--transition);
+      flex-shrink: 0;
     }
 
-    .square-btn:hover {
+    .btn-text {
+      flex: 1;
+      background: var(--btn-text-bg);
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 15px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 0.5px;
+      transition: var(--transition);
+    }
+
+    .rectangle-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      background: var(--primary-color);
-      color: white;
       border-color: var(--primary-color);
     }
     
-    .square-btn:hover span {
+    .rectangle-btn:hover .btn-icon {
+      background: var(--btn-hover-icon-bg);
       color: white;
+    }
+    
+    .rectangle-btn:hover .btn-text {
+      background: var(--btn-hover-text-bg);
+      color: var(--primary-color);
     }
 
     /* === Слайдер (скрыт по умолчанию) === */
@@ -317,7 +341,7 @@
     .slider-image {
       max-width: 100%;
       max-height: 100%;
-      object-fit: contain; /* В слайдере тоже вписываем полностью */
+      object-fit: contain;
       border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       background: white;
@@ -442,10 +466,10 @@
 
       #about-image-container {
         width: 100%;
-        max-width: 400px; /* Ограничиваем ширину */
+        max-width: 400px;
         height: auto;
         min-height: 200px;
-        max-height: 350px; /* Ограничиваем высоту на мобильных */
+        max-height: 350px;
       }
 
       #about-image {
@@ -453,7 +477,7 @@
         max-width: 100%;
         height: auto;
         max-height: 350px;
-        object-fit: contain; /* На мобильных тоже вписываем полностью */
+        object-fit: contain;
       }
 
       #about-text {
@@ -470,20 +494,26 @@
           font-size: 1em;
       }
 
-      .square-buttons {
-        gap: 10px;
-        margin-top: 20px;
+      .rectangle-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
       }
       
-      .square-btn {
-        width: 60px;
-        height: 60px;
-        font-size: 20px;
-        border-radius: 12px;
+      .rectangle-btn {
+        width: 100%;
+        max-width: 250px;
+        height: 65px;
       }
       
-      .square-btn span {
-          display: none;
+      .btn-icon {
+        width: 65px;
+        font-size: 22px;
+      }
+      
+      .btn-text {
+        font-size: 12px;
+        padding: 0 10px;
       }
 
       .language-switcher {
@@ -523,6 +553,10 @@
       #about-image {
         max-height: 400px;
       }
+      
+      .rectangle-btn {
+        width: 180px;
+      }
     }
 
     /* === Очень маленькие экраны === */
@@ -547,9 +581,14 @@
         max-height: 250px;
       }
       
-      .square-btn {
-        width: 55px;
-        height: 55px;
+      .rectangle-btn {
+        height: 60px;
+        max-width: 220px;
+      }
+      
+      .btn-icon {
+        width: 60px;
+        font-size: 20px;
       }
       
       .language-switcher {
@@ -623,8 +662,8 @@
         </ul>
 
         Доверьте своего любимца профессионалам с 10-летним опытом!`,
-        btnInstagram: "Insta",
-        btnGallery: "Фото",
+        btnInstagram: "Instagram",
+        btnGallery: "Галерея",
         btnBooking: "Запись"
       },
       lv: {
@@ -638,8 +677,8 @@
         </ul>
 
         Uzticiet savu četrkājaino draugu profesionāļiem ar 10 gadu pieredzi!`,
-        btnInstagram: "Insta",
-        btnGallery: "Foto",
+        btnInstagram: "Instagram",
+        btnGallery: "Galerija",
         btnBooking: "Pieraksts"
       }
     };
@@ -711,7 +750,7 @@
         contentContainer.classList.add('vertical-layout');
         document.getElementById('about-image-container').classList.add('mobile-image');
         document.getElementById('about-text').classList.add('mobile-text');
-        document.querySelector('.square-buttons').classList.add('mobile-buttons');
+        document.querySelector('.rectangle-buttons').classList.add('mobile-buttons');
       } else {
         // Для широких экранов проверяем, помещаются ли элементы
         const imageWidth = document.getElementById('about-image-container').offsetWidth;
@@ -725,7 +764,7 @@
           contentContainer.classList.remove('vertical-layout');
           document.getElementById('about-image-container').classList.remove('mobile-image');
           document.getElementById('about-text').classList.remove('mobile-text');
-          document.querySelector('.square-buttons').classList.remove('mobile-buttons');
+          document.querySelector('.rectangle-buttons').classList.remove('mobile-buttons');
         }
       }
       
@@ -866,45 +905,41 @@
 
     // === Основной React компонент ===
     function App() {
-      const [language, setLanguage] = React.useState(null);
+      const [language, setLanguage] = React.useState('lv'); // Начальный язык - латышский
       const [showSlider, setShowSlider] = React.useState(false);
 
       // Запускаем проверку буферных зон при изменении языка и размера окна
       React.useEffect(() => {
-        if (language) {
-          // Первая проверка
-          setTimeout(checkBufferZones, 100);
-          
-          // Проверка при изменении размера окна
-          const handleResize = () => {
-            checkBufferZones();
-          };
-          
-          window.addEventListener('resize', handleResize);
-          
-          return () => {
-            window.removeEventListener('resize', handleResize);
-          };
-        }
+        // Первая проверка
+        setTimeout(checkBufferZones, 100);
+        
+        // Проверка при изменении размера окна
+        const handleResize = () => {
+          checkBufferZones();
+        };
+        
+        window.addEventListener('resize', handleResize);
+        
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
       }, [language]);
 
-      // Функция запуска анимации при выборе языка
-      const startAnimation = (lang) => {
-        setLanguage(lang);
-
+      // При загрузке сразу активируем состояние
+      React.useEffect(() => {
         const logo = document.getElementById('logo');
         const contentContainer = document.getElementById('content-container');
         
-        // Активация состояния логотипа
+        // Сразу активируем состояние логотипа
         logo.classList.add('active-state');
-
-        // Показ контента с задержкой
+        
+        // Сразу показываем контент (без заставки)
         setTimeout(() => {
           contentContainer.style.opacity = '1';
           // Проверяем буферные зоны после показа контента
           setTimeout(checkBufferZones, 100);
-        }, 800);
-      };
+        }, 300);
+      }, []);
 
       // Обработчик клика по кнопкам
       const handleButtonClick = (button) => {
@@ -922,14 +957,14 @@
           <div className="language-switcher">
             <button 
               className={`language-btn ${language === 'ru' ? 'active' : ''}`}
-              onClick={() => startAnimation('ru')}
+              onClick={() => setLanguage('ru')}
               aria-label="Russian language"
             >
               RU
             </button>
             <button 
               className={`language-btn ${language === 'lv' ? 'active' : ''}`}
-              onClick={() => startAnimation('lv')}
+              onClick={() => setLanguage('lv')}
               aria-label="Latvian language"
             >
               LV
@@ -955,17 +990,17 @@
             <div 
               id="about-text" 
               dangerouslySetInnerHTML={{
-                __html: language ? translations[language].description : ''
+                __html: translations[language].description
               }}
             ></div>
             
-            {/* Квадратные кнопки */}
-            <div className="square-buttons">
-              {language && buttonConfig.map(button => (
+            {/* Прямоугольные кнопки */}
+            <div className="rectangle-buttons">
+              {buttonConfig.map(button => (
                 <a
                   key={button.id}
                   href={button.link || '#'}
-                  className="square-btn"
+                  className="rectangle-btn"
                   target={button.link && button.link.startsWith('http') ? '_blank' : '_self'}
                   onClick={(e) => {
                     // Для кнопок без ссылки (галерея) предотвращаем переход
@@ -974,13 +1009,13 @@
                     }
                     handleButtonClick(button);
                   }}
-                  style={{
-                    textDecoration: 'none',
-                    color: 'inherit'
-                  }}
                 >
-                  <i className={button.icon}></i>
-                  <span>{translations[language][button.labelKey]}</span>
+                  <div className="btn-icon">
+                    <i className={button.icon}></i>
+                  </div>
+                  <div className="btn-text">
+                    {translations[language][button.labelKey]}
+                  </div>
                 </a>
               ))}
             </div>
@@ -1001,5 +1036,4 @@
     root.render(<App />);
   </script>
 </body>
-</html>
 </html>
